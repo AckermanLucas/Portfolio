@@ -6,43 +6,89 @@ import "./App.css";
 const data = {
   lastName: "RAZAFINDRAHOLY",
   firstName: "Mampianina Lucas Princi",
-  title: "Consultant SAP Junior",
+  title: "Consultant IT Junior",
   about:
-    "Consultant SAP junior combinant des compétences techniques solides en développement SAP (ABAP, OData, SAPUI5, Fiori) avec une bonne compréhension des processus métiers. Motivé, curieux et désireux de contribuer à des projets innovants.",
+    "Consultant IT junior disposant d'une base en ERP à travers une expérience sur SAP S/4HANA, ainsi qu'en développement informatique et compréhension des processus métier. Rigoureux, curieux et doté d'une forte capacité d'apprentissage, je souhaite évoluer sur des projets IT variés nécessitant à la fois réflexion technique et adaptation aux besoins métiers. Mobile et disponible pour des missions en présentiel ou à distance.",
   contact: {
     email: "mampianina2002@gmail.com",
-    phone: "+261 34 07 143 74",
-    address: "Fianarantsoa, Madagascar",
+    phone: "+261 38 56 752 32",
+    address: "Antananarivo, Madagascar — Mobilité OK",
     github: "https://github.com/AckermanLucas",
   },
-  qualities: ["Fiable & rigoureux", "Curieux & enthousiaste", "Team player"],
+  qualities: ["Fiable & rigoureux", "Enthousiaste & curieux", "Esprit d'équipe"],
   languages: [
     { lang: "Malagasy", level: "Langue maternelle" },
-    { lang: "Français", level: "Excellent" },
+    { lang: "Français", level: "Niveau B2 (DELF)" },
     { lang: "Anglais", level: "Intermédiaire" },
   ],
   floatCards: [
-    { icon: "🔷", title: "SAP ABAP / Fiori", sub: "Développement & Customizing" },
-    { icon: "📊", title: "SAP BW / S/4HANA", sub: "Business Intelligence & Analytics" },
-  
+    { icon: "💼", title: "ERP S/4HANA", sub: "Implémentation & Développement" },
+    { icon: "🌐", title: "Web Full-Stack", sub: "React JS · Laravel · Java" },
+    { icon: "🔗", title: "Intégration & API", sub: "OData · IDocs · CPI" },
   ],
   skills: [
-    { category: "SAP", items: ["ABAP", "SAPUI5", "Fiori", "OData", "S/4HANA", "IDoc", "CDS Views", "SAP BTP", "SAP BW"] },
-    { category: "Frontend", items: ["React JS", "HTML5", "CSS3", "JavaScript", ] },
-    { category: "Backend", items: [ "Java", "J2EE", "PHP Laravel"] },
+    { category: "Langages", items: ["ABAP", "Java", "JavaScript", "PHP", "C#"] },
+    { category: "Web & Frameworks", items: ["React JS", "Next.js", "Laravel", "SAPUI5", "Fiori"] },
+    { category: "ERP & Entreprise", items: ["SAP S/4HANA", "CDS Views", "OData", "IDocs", "BW on HANA", "CPI", "Cloud Connector", "BAS", "LTMC", "LTMOM"] },
     { category: "Base de données", items: ["MySQL", "PostgreSQL"] },
-    { category: "OS & Outils", items: ["Linux", "Windows", "Git", "Excel"] },
+    { category: "Outils & OS", items: ["Git", "Linux", "Windows", "Postman", "BAS"] },
   ],
   projects: [
-    { name: "Géoart'tech", desc: "Site de géolocalisation des établissements à Fianarantsoa", date: "Mai 2024", tags: ["ReactGeo", "Web Mapping"], icon: "🗺️" },
-    { name: "E-Commerce Informatique", desc: "Application de vente en ligne de matériels informatiques", date: "Nov 2023", tags: ["Laravel", "E-Commerce"], icon: "🛒" },
-    { name: "Badge MTEFPLS", desc: "Recensement et impression de badge employés du Ministère", date: "Août 2022", tags: ["PHP", "MySQL"], icon: "🪪" },
-    { name: "Gestion MAKI", desc: "Application web de gestion de vente", date: "Avr 2022", tags: ["PHP", "Web App"], icon: "📦" },
-    { name: "App Chat Client/Serveur", desc: "Messagerie en temps réel client/serveur", date: "Mars 2022", tags: ["Java", "Socket"], icon: "💬" },
-    { name: "Gestion Kits DREN", desc: "Gestion des manuels et kits scolaires pour la DREN", date: "Juin 2021", tags: ["Web App"], icon: "📚" },
-    { name: "Logiciel Taxi-Brousse MAMI", desc: "Logiciel de gestion de coopérative de transport", date: "Sep 2019", tags: ["Java", "Desktop"], icon: "🚐" },
+    {
+      name: "Migration ECC → S/4HANA",
+      desc: "Migration de données clients et commandes de SAP ECC 6.0 vers S/4HANA. Validation par BAPIs, génération automatique d'IDocs DEBMAS07 vers partenaires logistiques, rapport de migration avec gestion des erreurs.",
+      date: "2025",
+      tags: ["ABAP", "IDocs", "LTMOM", "S/4HANA", "BAPIs"],
+      icon: "🔄",
+    },
+    {
+      name: "Gestion des articles MM",
+      desc: "Workflow multi-profils (Demandeur / Acheteur / Analyste) pour création, modification et suppression d'articles SAP. ALV Grid éditable, BDC pour création de RFQ (ME41), notification email avec formulaire Adobe Forms joint.",
+      date: "2025",
+      tags: ["ABAP", "ALV", "BDC", "Adobe Forms", "MM"],
+      icon: "⚙️",
+    },
+    {
+      name: "Application Fiori E-Commerce",
+      desc: "Application Fiori full-stack avec backoffice de gestion et vitrine client. Consommation de CDS Views via services OData V2, développée et déployée sur Business Application Studio.",
+      date: "2025",
+      tags: ["Fiori", "SAPUI5", "CDS Views", "OData", "BAS"],
+      icon: "🛍️",
+    },
+    {
+      name: "Interfaces Fiori & CDS Views",
+      desc: "Développement de plusieurs interfaces Fiori Elements consommant des CDS Views annotées dans le cadre de workshops S/4HANA — gestion, reporting et visualisation de données métiers.",
+      date: "2025",
+      tags: ["Fiori Elements", "CDS Views", "OData", "S/4HANA"],
+      icon: "🖥️",
+    },
+    {
+      name: "Plateforme d'indicateurs multisectoriels",
+      desc: "Plateforme web de centralisation, d'analyse et de visualisation d'indicateurs multisectoriels à Madagascar. Tableaux de bord interactifs et agrégation de données multisources. Projet freelance & mémoire Master.",
+      date: "2025",
+      tags: ["Next.js", "R", "Data Viz"],
+      icon: "📊",
+    },
+    {
+      name: "Géoart'Tech — Web Mapping",
+      desc: "Site web de géolocalisation interactive des établissements à Fianarantsoa, réalisé dans le cadre du mini-mémoire de Master I.",
+      date: "2023",
+      tags: ["React.js", "Laravel", "MySQL"],
+      icon: "🗺️",
+    },
+    {
+      name: "Projets académiques web",
+      desc: "E-commerce de matériels informatiques (Java EE), badge & recensement MTEFPLS (PHP/Laravel), gestion de kits scolaires DREN (C#), application Chat Client/Serveur (Java).",
+      date: "2021 – 2023",
+      tags: ["Java EE", "PHP", "Laravel", "C#"],
+      icon: "📁",
+    },
   ],
-
+  education: [
+    { degree: "Master II — Modélisation et Ingénierie Informatique", school: "EMIT — Fianarantsoa", period: "2023 – 2024", note: "Diplôme obtenu" },
+    { degree: "Master I — Modélisation et Ingénierie Informatique", school: "EMIT — Fianarantsoa", period: "2022 – 2023" },
+    { degree: "Licence — Développement d'Application Internet et Intranet", school: "EMIT — Fianarantsoa", period: "2019 – 2022" },
+  ],
 };
 
 /* ─── CUSTOM CURSOR ─────────────────────────── */
@@ -189,7 +235,7 @@ export default function App() {
     setMenuOpen(false);
   };
 
-  const navItems = ["about", "skills", "projects", "contact"];
+  const navItems = ["about", "skills", "projects", "education", "contact"];
 
   return (
     <div className="app">
@@ -236,8 +282,8 @@ export default function App() {
               <button className="btn-secondary" onClick={() => scrollTo("contact")}>Me contacter</button>
             </div>
             <a
-              href="/CV_Lucas_Razafindraholy.pptx"
-              download="CV_RAZAFINDRAHOLY_Lucas.pptx"
+              href="/CV_Lucas_Razafindraholy.pdf"
+              download="CV_RAZAFINDRAHOLY_Mampianina_Lucas_Princi.pdf"
               className="btn-cv"
             >
               <DownloadIcon /> Télécharger mon CV
@@ -260,7 +306,7 @@ export default function App() {
                 <span className="dot" /> Disponible
               </div>
               <div className="photo-badge bottom-left">
-                🎓 Master II en Modélisation et Ingénierie Informatique
+                🎓 Master II · ERP S/4HANA
               </div>
             </div>
           </div>
@@ -342,6 +388,25 @@ export default function App() {
                 <p className="project-desc">{proj.desc}</p>
                 <div className="project-tags">
                   {proj.tags.map((t) => <span key={t} className="project-tag">{t}</span>)}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* EDUCATION */}
+      <section id="education" ref={setRef("education")} className={`section alt ${visible.education ? "visible" : ""}`}>
+        <div className="container">
+          <SectionTitle num="04" title="Formation" />
+          <div className="education-list">
+            {data.education.map((edu, i) => (
+              <div key={i} className="edu-item" style={{ animationDelay: `${i * 0.08}s` }}>
+                <div className="edu-period">{edu.period}</div>
+                <div>
+                  <h3 className="edu-degree">{edu.degree}</h3>
+                  <p className="edu-school">{edu.school}</p>
+                  {edu.note && <p className="edu-note">⏳ {edu.note}</p>}
                 </div>
               </div>
             ))}

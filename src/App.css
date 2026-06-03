@@ -566,6 +566,7 @@
 }
 .edu-degree { font-family: var(--font-display); font-size: 0.96rem; font-weight: 700; color: var(--text); margin-bottom: 3px; }
 .edu-school { font-size: 0.82rem; color: var(--text-muted); }
+.edu-note { font-size: 0.75rem; color: var(--accent); font-weight: 600; margin-top: 4px; }
 
 /* ══════════════════════════════════════
    CONTACT
