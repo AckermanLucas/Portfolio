@@ -125,10 +125,8 @@ const SAP_BADGE_COLOR = {
 
 const SAP_BADGE_TEXT = {
   sap:"SAP", abap:"ABAP", sapui5:"UI5", fiori:"Fiori",
-  s4hana:"S/4
-HANA", cds:"CDS", odata:"OData", idocs:"IDoc",
-  bw:"BW", cpi:"CPI", cloud:"Cloud
-Conn.", ltmc:"LTMC",
+  s4hana:"S/4|HANA", cds:"CDS", odata:"OData", idocs:"IDoc",
+  bw:"BW", cpi:"CPI", cloud:"Cloud|Conn.", ltmc:"LTMC",
   ltmom:"LTMOM", bas:"BAS",
 };
 
