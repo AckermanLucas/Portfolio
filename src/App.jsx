@@ -87,8 +87,9 @@ const data = {
     { name: "Application Fiori E-Commerce", desc: "Application Fiori full-stack avec backoffice de gestion et vitrine client. Consommation de CDS Views via services OData V2, développée sur Business Application Studio.", date: "2025", tags: ["Fiori", "SAPUI5", "CDS Views", "OData"], icon: "shopping" },
     { name: "Interfaces Fiori & CDS Views", desc: "Développement de plusieurs interfaces Fiori Elements consommant des CDS Views annotées dans le cadre de workshops S/4HANA — gestion, reporting et visualisation de données métiers.", date: "2025", tags: ["Fiori Elements", "CDS Views", "S/4HANA"], icon: "monitor" },
     { name: "Plateforme d'indicateurs multisectoriels", desc: "Plateforme web de centralisation et visualisation d'indicateurs multisectoriels à Madagascar. Tableaux de bord interactifs et agrégation de données multisources. Projet freelance & mémoire Master.", date: "2025", tags: ["Next.js", "R", "Data Viz"], icon: "chart" },
-    { name: "Géoart'Tech — Web Mapping", desc: "Site web de géolocalisation interactive des établissements à Fianarantsoa, réalisé dans le cadre du mini-mémoire de Master I.", date: "2023", tags: ["React.js", "Laravel", "MySQL"], icon: "map" },
-    { name: "Projets académiques web", desc: "E-commerce informatique (Java EE), badge & recensement MTEFPLS (PHP/Laravel), gestion de kits scolaires DREN (C#), application Chat Client/Serveur (Java).", date: "2019–2023", tags: ["Java EE", "PHP", "Laravel", "C#"], icon: "folder" },
+    { name: "Géoart'Tech — Site Web", desc: "Développement d'un site web dans le cadre du mini-mémoire de Master I. Conception et développement complet de la plateforme.", date: "2023", tags: ["React.js", "Laravel", "MySQL"], icon: "monitor" },
+    { name: "Application Web Mapping", desc: "Application de géolocalisation interactive des établissements à Fianarantsoa. Carte dynamique avec marqueurs et navigation.", date: "2023", tags: ["ReactJS", "Leaflet"], icon: "map" },
+    { name: "Projets académiques web", desc: "E-commerce informatique (Java EE), badge & recensement MTEFPLS (PHP/Laravel), gestion de kits scolaires DREN (C#), application Chat Client/Serveur (Java).", date: "2019–2022", tags: ["Java EE", "PHP", "Laravel", "C#"], icon: "folder" },
   ],
   education: [
     { degree: "Master II — Modélisation et Ingénierie Informatique", school: "EMIT — Fianarantsoa", period: "2023 – 2024" },
@@ -97,42 +98,66 @@ const data = {
   ],
 };
 
-/* ─── TECH ICONS SVG ────────────────────────── */
+/* ─── TECH ICONS — OFFICIAL LOGOS via img ───── */
+const TECH_LOGOS = {
+  react:      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  nextjs:     "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
+  js:         "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+  php:        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg",
+  java:       "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
+  csharp:     "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg",
+  laravel:    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/laravel/laravel-original.svg",
+  mysql:      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+  postgresql: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
+  git:        "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+  linux:      "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg",
+  windows:    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/windows8/windows8-original.svg",
+  postman:    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg",
+};
+
+const SAP_BADGE_COLOR = {
+  sap:    "#0070F2", abap:  "#E8000D", sapui5: "#0070F2",
+  fiori:  "#0070F2", s4hana:"#0070F2", cds:   "#0070F2",
+  odata:  "#E8000D", idocs: "#F0AB00", bw:    "#0A2780",
+  cpi:    "#6A1B9A", cloud: "#0070F2", ltmc:  "#1B5E20",
+  ltmom:  "#1B5E20", bas:   "#0070F2",
+};
+
+const SAP_BADGE_TEXT = {
+  sap:"SAP", abap:"ABAP", sapui5:"UI5", fiori:"Fiori",
+  s4hana:"S/4
+HANA", cds:"CDS", odata:"OData", idocs:"IDoc",
+  bw:"BW", cpi:"CPI", cloud:"Cloud
+Conn.", ltmc:"LTMC",
+  ltmom:"LTMOM", bas:"BAS",
+};
+
 const TechIcon = ({ icon, size = 36 }) => {
-  const icons = {
-    react: <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="2.5" fill="#61DAFB"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="#61DAFB" strokeWidth="1.2" fill="none"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="#61DAFB" strokeWidth="1.2" fill="none" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" stroke="#61DAFB" strokeWidth="1.2" fill="none" transform="rotate(120 12 12)"/></svg>,
-    nextjs: <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm3.5 14.5L8 9v7H6.5V7h1.75l7 9.5H14v-7h1.5v7z"/></svg>,
-    js: <svg viewBox="0 0 24 24"><rect width="24" height="24" rx="3" fill="#F7DF1E"/><path d="M7 17.5c.4.7 1 1.2 2 1.2 1.1 0 1.8-.55 1.8-1.3 0-.9-.7-1.2-1.9-1.7l-.65-.28c-1.9-.8-3.15-1.8-3.15-3.9 0-1.95 1.48-3.42 3.8-3.42 1.65 0 2.83.57 3.68 2.07l-2 1.28c-.44-.8-.92-1.1-1.67-1.1-.76 0-1.24.48-1.24 1.1 0 .77.48 1.08 1.59 1.56l.65.28C12.16 13.9 13.5 14.87 13.5 17c0 2.23-1.75 3.6-4.1 3.6-2.3 0-3.8-1.1-4.53-2.54L7 17.5zm9.35 2.3c.5.8 1.13 1.4 2.27 1.4 1.16 0 1.9-.58 1.9-1.38 0-.96-.76-1.3-2.04-1.86l-.7-.3c-2.02-.86-3.37-1.94-3.37-4.22 0-2.1 1.6-3.7 4.1-3.7 1.78 0 3.06.62 3.98 2.24l-2.18 1.4c-.48-.86-.99-1.2-1.8-1.2-.82 0-1.34.52-1.34 1.2 0 .84.52 1.18 1.72 1.7l.7.3c2.38 1.02 3.74 2.06 3.74 4.4C23 20.5 21.2 22 18.75 22c-2.62 0-4.32-1.25-5.15-2.88L16.35 19.8z" fill="#000"/></svg>,
-    php: <svg viewBox="0 0 24 24" fill="#777BB4"><path d="M12 6C5.925 6 1 8.686 1 12s4.925 6 11 6 11-2.686 11-6-4.925-6-11-6zm-1.5 8.5H9l.375-2H8l-.375 2H6l1-6h3.5c1 0 1.625.5 1.375 1.5L11.5 11c-.125.5-.5.875-1 1L10.875 13H12l-.5 1.5zM9.5 10h1l-.25 1.5h-1L9.5 10zm6.375 4.5H14l.5-3h-1l-.5 3h-1.5l1-6H16c1 0 1.625.5 1.375 1.5l-.375 1.5c-.25 1-1 1.5-2 1.5h-.625L14 14.5h-1l1-.5z"/></svg>,
-    java: <svg viewBox="0 0 24 24" fill="#ED8B00"><path d="M8.851 18.56s-.917.534.653.714c1.902.218 2.874.187 4.969-.211 0 0 .552.346 1.321.646-4.699 2.013-10.633-.118-6.943-1.149M8.276 15.933s-1.028.761.542.924c2.032.209 3.636.227 6.413-.308 0 0 .384.389.987.602-5.679 1.661-12.007.13-7.942-1.218M13.116 11.475c1.158 1.333-.304 2.533-.304 2.533s2.939-1.518 1.589-3.418c-1.261-1.772-2.228-2.652 3.007-5.688 0-.001-8.216 2.051-4.292 6.573M19.33 20.504s.679.559-.747.991c-2.712.822-11.288 1.069-13.669.033-.856-.373.75-.89 1.254-.998.527-.114.828-.093.828-.093-.953-.671-6.156 1.317-2.643 1.887 9.58 1.553 17.462-.7 14.977-1.82M9.292 13.21s-4.362 1.036-1.544 1.412c1.189.159 3.561.123 5.77-.062 1.806-.152 3.618-.477 3.618-.477s-.637.272-1.098.587c-4.429 1.165-12.986.623-10.522-.568 2.082-1.006 3.776-.892 3.776-.892M17.116 17.584c4.503-2.34 2.421-4.589.968-4.285-.355.074-.515.138-.515.138s.132-.207.385-.297c2.875-1.011 5.086 2.981-.928 4.562 0-.001.07-.062.09-.118M14.401 0s2.494 2.494-2.365 6.33c-3.896 3.077-.888 4.832-.001 6.836-2.274-2.053-3.943-3.858-2.824-5.54 1.644-2.469 6.197-3.665 5.19-7.626M9.734 23.924c4.322.277 10.959-.153 11.116-2.198 0 0-.302.775-3.572 1.391-3.688.694-8.239.613-10.937.168 0-.001.553.457 3.393.639"/></svg>,
-    csharp: <svg viewBox="0 0 24 24" fill="#9B4F96"><path d="M12 1.5L2.25 7.5v9l9.75 6 9.75-6v-9L12 1.5zM12 4.155l7.5 4.595v.5h-1.5v-1h-1.5v1h-1v-1h-1.5v1h-.75L12 8.5l-1.25.75H10v-1H8.5v1h-1v-1H6v1H4.5v-.5l7.5-4.595zM6 13.5h1.5v1.5H6V13.5zm0-3h1.5v1.5H6V10.5zm3 3h1.5v1.5H9V13.5zm0-3h1.5v1.5H9V10.5zm3 3h1.5v1.5H12V13.5zm0-3h1.5v1.5H12V10.5zm3 3h1.5v1.5H15V13.5zm0-3h1.5v1.5H15V10.5z"/></svg>,
-    laravel: <svg viewBox="0 0 24 24" fill="#FF2D20"><path d="M23.642 5.43a.364.364 0 01.014.1v5.149c0 .135-.073.26-.189.326l-4.323 2.49v4.934a.378.378 0 01-.188.326L9.93 23.949a.316.316 0 01-.066.027.326.326 0 01-.066.017.456.456 0 01-.131 0 .309.309 0 01-.066-.017.316.316 0 01-.066-.027L.37 18.755a.378.378 0 01-.188-.326V3.ncol.n.n..."/></svg>,
-    sap: <svg viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#0070F2"/><text x="2" y="17" fontSize="11" fontWeight="bold" fill="white" fontFamily="Arial">SAP</text></svg>,
-    s4hana: <svg viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#0070F2"/><text x="2" y="16" fontSize="8" fontWeight="bold" fill="white" fontFamily="Arial">S/4</text><text x="2" y="23" fontSize="7" fill="white" fontFamily="Arial">HANA</text></svg>,
-    mysql: <svg viewBox="0 0 24 24" fill="#4479A1"><path d="M16.405 5.501c-.115 0-.193.014-.274.033v.013h.014c.054.104.146.18.214.273.054.107.1.214.154.32l.014-.015c.094-.066.14-.172.14-.333-.04-.047-.046-.094-.08-.133-.04-.04-.147-.06-.182-.158zM5.77 18.695h-.927a50.854 50.854 0 00-.27-4.41h-.008l-1.41 4.41H2.45l-1.4-4.41h-.01a72.892 72.892 0 00-.195 4.41H0c.055-1.966.192-3.81.41-5.53h1.15l1.335 4.064h.008l1.335-4.064h1.095c.242 1.96.384 3.814.437 5.53zm4.655-.045a6.67 6.67 0 01-1.03.09c-1.3 0-1.95-.49-1.95-1.47 0-.984.755-1.62 1.9-1.62.298 0 .567.034.814.1v-.49c0-.574-.287-.86-.862-.86-.435 0-.826.07-1.175.214l-.203-.78c.394-.152.88-.228 1.46-.228 1.044 0 1.567.49 1.567 1.47v3.574h-.52v.0zm-.004-2.34a2.42 2.42 0 00-.73-.107c-.6 0-.9.24-.9.72 0 .46.27.69.81.69.264 0 .535-.04.82-.12v-1.183z"/></svg>,
-    postgresql: <svg viewBox="0 0 24 24" fill="#336791"><path d="M17.128 0a10.134 10.134 0 00-2.755.403C13.325.72 12.516 1.223 11.8 1.858A8.422 8.422 0 009.4 5.3a8.9 8.9 0 00-.746 3.7c0 1.197.199 2.257.596 3.166.398.91.943 1.598 1.635 2.064.69.465 1.452.698 2.282.698.552 0 1.117-.127 1.692-.38l.34-.197c.22 1.051.55 1.94.987 2.666.437.726.988 1.298 1.65 1.712.664.413 1.4.62 2.21.62.825 0 1.573-.213 2.243-.64a5.033 5.033 0 001.648-1.74c.43-.737.648-1.574.648-2.508 0-.78-.152-1.516-.455-2.21A5.072 5.072 0 0022.35 11a5.18 5.18 0 00-1.802-.923 10.27 10.27 0 00.484-1.39c.19-.64.29-1.26.3-1.86a7.663 7.663 0 00-.507-2.79 6.25 6.25 0 00-1.45-2.21A6.3 6.3 0 0017.128 0z"/></svg>,
-    git: <svg viewBox="0 0 24 24" fill="#F05032"><path d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.441.516.515.658 1.258.438 1.9l2.658 2.66c.645-.223 1.387-.078 1.9.435.721.72.721 1.884 0 2.604-.719.719-1.881.719-2.6 0-.539-.541-.674-1.337-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348.713.721.713 1.883 0 2.6-.719.721-1.889.721-2.609 0-.719-.719-.719-1.879 0-2.6.182-.18.387-.316.605-.406V8.835c-.217-.091-.424-.222-.6-.401-.545-.545-.676-1.342-.396-2.009L7.636 3.7.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477c.604.604 1.582.604 2.186 0l10.43-10.43c.605-.603.605-1.582 0-2.187"/></svg>,
-    linux: <svg viewBox="0 0 24 24" fill="#FCC624"><path d="M12.504 0c-.155 0-.315.008-.48.021-4.226.333-3.105 4.807-3.17 6.298-.076 1.092-.3 1.953-1.05 3.02-.885 1.051-2.127 2.75-2.716 4.521-.278.832-.41 1.684-.287 2.489a.424.424 0 00-.11.135c-.26.268-.45.6-.663.839-.199.199-.485.267-.797.4-.313.136-.658.269-.864.68-.09.189-.136.394-.132.602 0 .199.027.4.055.536.058.399.116.728.04.97-.249.68-.28 1.145-.106 1.484.174.334.535.47.94.601.81.2 1.74.15 2.19.343.45.19.459.665.03 1.402-.421.727-.914 1.948-.33 3.132.59 1.201 2.14 1.434 3.31 1.507 1.172.074 1.9-.042 2.36.51.46.556.339 1.74.79 2.695.453.955 1.33 1.403 2.21 1.403.88 0 1.757-.448 2.21-1.403.45-.954.33-2.14.79-2.696.46-.551 1.188-.436 2.36-.51 1.17-.073 2.72-.306 3.31-1.507.584-1.184.09-2.405-.33-3.132-.43-.737-.42-1.212.03-1.402.45-.193 1.38-.143 2.19-.343.405-.13.766-.267.94-.601.175-.339.143-.804-.106-1.484-.077-.242-.018-.57.04-.97.028-.136.055-.337.055-.536a1.549 1.549 0 00-.132-.602c-.206-.411-.55-.544-.864-.68-.312-.133-.598-.2-.797-.4-.214-.238-.404-.57-.663-.839a.438.438 0 00-.11-.135c.122-.805-.009-1.657-.287-2.489-.589-1.771-1.831-3.47-2.716-4.521-.75-1.067-.974-1.928-1.05-3.02-.065-1.491 1.056-5.965-3.17-6.298A6.olean.olean.olean.olean.olean.olean 0 0012.504 0z"/></svg>,
-    postman: <svg viewBox="0 0 24 24" fill="#FF6C37"><path d="M13.527.099C6.955-.744.942 3.9.099 10.473c-.843 6.572 3.8 12.584 10.373 13.428 6.573.843 12.587-3.801 13.428-10.374C24.744 6.955 20.101.943 13.527.099zm2.626 7.425l-3.46 3.458-.002.002.002.002 1.259 1.258c.219.22.219.576 0 .794l-2.423 2.423a.562.562 0 01-.794 0l-1.26-1.26-3.46 3.46a.44.44 0 01-.312.129.432.432 0 01-.31-.742l3.46-3.46-1.26-1.26a.561.561 0 010-.793l2.423-2.424a.563.563 0 01.794 0l1.258 1.258 3.46-3.46a.44.44 0 01.622.622z"/></svg>,
-    windows: <svg viewBox="0 0 24 24" fill="#0078D6"><path d="M0 3.449L9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.9-1.801"/></svg>,
-    bas: <svg viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#0070F2"/><text x="2" y="16" fontSize="8" fontWeight="bold" fill="white" fontFamily="Arial">BAS</text></svg>,
-    cds: <svg viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#0070F2"/><text x="1" y="16" fontSize="8" fontWeight="bold" fill="white" fontFamily="Arial">CDS</text></svg>,
-    odata: <svg viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#E8000D"/><text x="1" y="16" fontSize="7" fontWeight="bold" fill="white" fontFamily="Arial">OData</text></svg>,
-    idocs: <svg viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#F0AB00"/><text x="1" y="16" fontSize="7" fontWeight="bold" fill="white" fontFamily="Arial">IDoc</text></svg>,
-    bw: <svg viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#0070F2"/><text x="3" y="16" fontSize="9" fontWeight="bold" fill="white" fontFamily="Arial">BW</text></svg>,
-    cpi: <svg viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#6A1B9A"/><text x="3" y="16" fontSize="9" fontWeight="bold" fill="white" fontFamily="Arial">CPI</text></svg>,
-    cloud: <svg viewBox="0 0 24 24" fill="#0070F2"><path d="M19.35 10.04A7.49 7.49 0 0012 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 000 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"/></svg>,
-    ltmc: <svg viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#1B5E20"/><text x="1" y="16" fontSize="7" fontWeight="bold" fill="white" fontFamily="Arial">LTMC</text></svg>,
-    ltmom: <svg viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#1B5E20"/><text x="1" y="16" fontSize="6" fontWeight="bold" fill="white" fontFamily="Arial">LTMOM</text></svg>,
-    abap: <svg viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#E8000D"/><text x="1" y="16" fontSize="8" fontWeight="bold" fill="white" fontFamily="Arial">ABAP</text></svg>,
-    sapui5: <svg viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#0070F2"/><text x="1" y="16" fontSize="6" fontWeight="bold" fill="white" fontFamily="Arial">UI5</text></svg>,
-    fiori: <svg viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="4" fill="#0070F2"/><circle cx="12" cy="12" r="5" fill="white" opacity="0.9"/><circle cx="12" cy="12" r="3" fill="#0070F2"/></svg>,
-    refresh: null, settings: null, shopping: null, monitor: null, chart: null, map: null, folder: null,
-  };
+  if (TECH_LOGOS[icon]) {
+    return (
+      <img
+        src={TECH_LOGOS[icon]}
+        alt={icon}
+        width={size} height={size}
+        style={{ objectFit: "contain", display: "block" }}
+        onError={(e) => { e.target.style.display = "none"; }}
+      />
+    );
+  }
+  const color = SAP_BADGE_COLOR[icon] || "#0070F2";
+  const label = SAP_BADGE_TEXT[icon] || icon.toUpperCase();
+  const lines = label.split("\n");
   return (
-    <span style={{ width: size, height: size, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>
-      {icons[icon] || <svg viewBox="0 0 24 24" fill="currentColor" width={size} height={size}><circle cx="12" cy="12" r="10" opacity="0.3"/></svg>}
-    </span>
+    <svg viewBox="0 0 48 48" width={size} height={size} style={{ display: "block" }}>
+      <rect width="48" height="48" rx="8" fill={color}/>
+      {lines.length === 1
+        ? <text x="24" y="31" fontSize={lines[0].length > 4 ? "10" : "14"} fontWeight="bold" fill="white" fontFamily="Arial, sans-serif" textAnchor="middle">{lines[0]}</text>
+        : <>
+            <text x="24" y="22" fontSize="13" fontWeight="bold" fill="white" fontFamily="Arial, sans-serif" textAnchor="middle">{lines[0]}</text>
+            <text x="24" y="36" fontSize="11" fill="white" fontFamily="Arial, sans-serif" textAnchor="middle">{lines[1]}</text>
+          </>
+      }
+    </svg>
   );
 };
 
