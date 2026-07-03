@@ -244,7 +244,7 @@
 }
 
 /* ── PHOTO FRAME — ROUND STYLISH ── */
-/* ── OCTAGON PHOTO — SOFT ROUNDED ── */
+/* ── OCTAGON PHOTO — ULTRA THIN BORDER ── */
 .hero-photo-col {
   display: flex; align-items: center; justify-content: center;
   animation: fade-in-up 0.7s 0.2s ease both;
@@ -256,13 +256,7 @@
   width: 300px; height: 300px;
 }
 
-/* Soft rounded octagon clip-path */
-/* Using SVG-based clip for rounded corners */
-.hero-photo-frame svg.oct-clip {
-  position: absolute; width: 0; height: 0;
-}
-
-/* Outer glow blur */
+/* Outer glow */
 .hero-photo-frame::before {
   content: '';
   position: absolute;
@@ -280,83 +274,66 @@
   50% { opacity: 0.32; transform: scale(1.05); }
 }
 
-/* Spinning outer gradient ring — ultra thin */
+/* Octagon clip-path avec border-radius 30% simulé via points arrondis */
+/* Spinning outer ring — ultra fin, presque invisible */
 .photo-ring-deco {
   position: absolute;
-  inset: -8px;
+  inset: -3px;
   background: conic-gradient(
     from 0deg,
     var(--accent) 0%,
-    var(--accent2) 25%,
-    transparent 45%,
-    transparent 55%,
-    var(--accent2) 75%,
+    var(--accent2) 30%,
+    transparent 48%,
+    transparent 52%,
+    var(--accent2) 70%,
     var(--accent) 100%
   );
   clip-path: polygon(
-    29% 1.5%, 71% 1.5%,
-    98.5% 29%, 98.5% 71%,
-    71% 98.5%, 29% 98.5%,
-    1.5% 71%, 1.5% 29%
+    30% 0%, 70% 0%,
+    100% 30%, 100% 70%,
+    70% 100%, 30% 100%,
+    0% 70%, 0% 30%
   );
+  border-radius: 30%;
   animation: spin-slow 14s linear infinite;
   z-index: 1;
-  opacity: 0.9;
-  border-radius: 8px;
+  opacity: 0.08;
 }
 
-/* Inner mask — slightly larger than photo to show only thin ring */
+/* Masque intérieur bg pour créer un trait ultra fin */
 .photo-ring-deco2 {
   position: absolute;
-  inset: -3px;
+  inset: -1px;
   background: var(--bg);
   clip-path: polygon(
-    29% 1.5%, 71% 1.5%,
-    98.5% 29%, 98.5% 71%,
-    71% 98.5%, 29% 98.5%,
-    1.5% 71%, 1.5% 29%
+    30% 0%, 70% 0%,
+    100% 30%, 100% 70%,
+    70% 100%, 30% 100%,
+    0% 70%, 0% 30%
   );
+  border-radius: 30%;
   z-index: 2;
-  border-radius: 6px;
 }
 
 @keyframes spin-slow {
   to { transform: rotate(360deg); }
 }
 
-/* Subtle accent dots at vertices */
-.hero-photo-frame::after {
-  content: '';
-  position: absolute;
-  inset: -5px;
-  background:
-    radial-gradient(circle 4px at 50% 1.5%, var(--accent) 100%, transparent 100%),
-    radial-gradient(circle 4px at 98.5% 29%, var(--accent2) 100%, transparent 100%),
-    radial-gradient(circle 4px at 98.5% 71%, var(--accent) 100%, transparent 100%),
-    radial-gradient(circle 4px at 50% 98.5%, var(--accent2) 100%, transparent 100%),
-    radial-gradient(circle 4px at 1.5% 71%, var(--accent) 100%, transparent 100%),
-    radial-gradient(circle 4px at 1.5% 29%, var(--accent2) 100%, transparent 100%);
-  z-index: 5;
-  pointer-events: none;
-  animation: dots-pulse 3.5s ease-in-out infinite;
-}
+/* Pas de points */
+.hero-photo-frame::after { display: none; }
 
-@keyframes dots-pulse {
-  0%, 100% { opacity: 0.6; }
-  50% { opacity: 1; }
-}
-
-/* Photo itself — soft octagon with rounded feel */
+/* Photo — octogone avec border-radius 30% */
 .hero-photo {
   position: relative; z-index: 3;
   width: 100%; height: 100%;
   object-fit: cover; object-position: top center;
   clip-path: polygon(
-    29% 1.5%, 71% 1.5%,
-    98.5% 29%, 98.5% 71%,
-    71% 98.5%, 29% 98.5%,
-    1.5% 71%, 1.5% 29%
+    30% 0%, 70% 0%,
+    100% 30%, 100% 70%,
+    70% 100%, 30% 100%,
+    0% 70%, 0% 30%
   );
+  border-radius: 30%;
   filter: drop-shadow(0 16px 36px var(--accent-glow));
   transition: filter 0.35s;
 }
@@ -398,27 +375,20 @@
   50% { transform: scale(1.6); opacity: 0.5; }
 }
 
-/* Dark mode — accent colored glow instead of black */
+/* Dark mode — glow violet */
 [data-theme="dark"] .hero-photo {
-  filter: drop-shadow(0 16px 36px rgba(124, 106, 247, 0.35));
+  filter: drop-shadow(0 16px 36px rgba(124, 106, 247, 0.4));
 }
 [data-theme="dark"] .hero-photo:hover {
-  filter: drop-shadow(0 20px 50px rgba(124, 106, 247, 0.55)) brightness(1.06);
+  filter: drop-shadow(0 20px 52px rgba(124, 106, 247, 0.6)) brightness(1.06);
 }
-[data-theme="dark"] .photo-ring-deco {
-  opacity: 1;
-}
-[data-theme="dark"] .hero-photo-frame::before {
-  opacity: 0.25;
-}
+[data-theme="dark"] .photo-ring-deco { opacity: 0.12; }
 
-/* Light mode — softer blue glow */
+/* Light mode — glow bleu doux */
 [data-theme="light"] .hero-photo {
-  filter: drop-shadow(0 16px 36px rgba(79, 142, 247, 0.25));
+  filter: drop-shadow(0 16px 36px rgba(79, 142, 247, 0.2));
 }
-[data-theme="light"] .photo-ring-deco {
-  opacity: 0.7;
-}
+[data-theme="light"] .photo-ring-deco { opacity: 0.07; }
 
 /* Right — Float cards */
 .hero-right {
