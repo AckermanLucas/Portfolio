@@ -244,7 +244,6 @@
 }
 
 /* ── PHOTO FRAME — ROUND STYLISH ── */
-/* ── OCTAGON PHOTO — ULTRA THIN BORDER ── */
 .hero-photo-col {
   display: flex; align-items: center; justify-content: center;
   animation: fade-in-up 0.7s 0.2s ease both;
@@ -260,85 +259,61 @@
 .hero-photo-frame::before {
   content: '';
   position: absolute;
-  inset: -24px;
-  background: radial-gradient(ellipse at center, var(--accent) 0%, var(--accent2) 50%, transparent 75%);
-  opacity: 0.18;
-  filter: blur(28px);
-  animation: glow-breathe 3.5s ease-in-out infinite;
-  z-index: 0;
-  border-radius: 40%;
+  inset: -16px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent2), transparent 60%);
+  opacity: 0.5;
+  filter: blur(16px);
+  animation: glow-breathe 3s ease-in-out infinite;
 }
 
 @keyframes glow-breathe {
-  0%, 100% { opacity: 0.15; transform: scale(0.97); }
-  50% { opacity: 0.32; transform: scale(1.05); }
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.04); }
 }
 
-/* Octagon clip-path avec border-radius 30% simulé via points arrondis */
-/* Spinning outer ring — ultra fin, presque invisible */
+/* Anneaux décoratifs rotatifs */
 .photo-ring-deco {
   position: absolute;
-  inset: -3px;
-  background: conic-gradient(
-    from 0deg,
-    var(--accent) 0%,
-    var(--accent2) 30%,
-    transparent 48%,
-    transparent 52%,
-    var(--accent2) 70%,
-    var(--accent) 100%
-  );
-  clip-path: polygon(
-    30% 0%, 70% 0%,
-    100% 30%, 100% 70%,
-    70% 100%, 30% 100%,
-    0% 70%, 0% 30%
-  );
-  border-radius: 30%;
-  animation: spin-slow 14s linear infinite;
-  z-index: 1;
-  opacity: 0.08;
+  inset: -12px;
+  border-radius: 50%;
+  border: 2px dashed var(--accent);
+  opacity: 0.3;
+  animation: spin-slow 18s linear infinite;
 }
-
-/* Masque intérieur bg pour créer un trait ultra fin */
 .photo-ring-deco2 {
   position: absolute;
-  inset: -1px;
-  background: var(--bg);
-  clip-path: polygon(
-    30% 0%, 70% 0%,
-    100% 30%, 100% 70%,
-    70% 100%, 30% 100%,
-    0% 70%, 0% 30%
-  );
-  border-radius: 30%;
-  z-index: 2;
+  inset: -22px;
+  border-radius: 50%;
+  border: 1px solid var(--accent2);
+  opacity: 0.15;
+  animation: spin-slow 28s linear infinite reverse;
 }
 
 @keyframes spin-slow {
   to { transform: rotate(360deg); }
 }
 
-/* Pas de points */
 .hero-photo-frame::after { display: none; }
 
-/* Photo — octogone avec border-radius 30% */
+/* Photo ronde */
 .hero-photo {
-  position: relative; z-index: 3;
+  position: relative; z-index: 2;
   width: 100%; height: 100%;
   object-fit: cover; object-position: top center;
-  clip-path: polygon(
-    30% 0%, 70% 0%,
-    100% 30%, 100% 70%,
-    70% 100%, 30% 100%,
-    0% 70%, 0% 30%
-  );
-  border-radius: 30%;
-  filter: drop-shadow(0 16px 36px var(--accent-glow));
-  transition: filter 0.35s;
+  border-radius: 50%;
+  border: 3px solid var(--bg);
+  box-shadow:
+    0 0 0 4px var(--accent),
+    0 20px 60px var(--accent-glow),
+    0 0 80px rgba(124,106,247,0.15);
+  transition: transform 0.35s, box-shadow 0.35s;
 }
 .hero-photo:hover {
-  filter: drop-shadow(0 20px 50px var(--accent-glow)) brightness(1.06);
+  transform: scale(1.03);
+  box-shadow:
+    0 0 0 4px var(--accent2),
+    0 24px 70px var(--accent-glow);
 }
 
 /* Badge */
@@ -368,28 +343,12 @@
   box-shadow: 0 0 8px #22c55e;
   animation: pulse 2s ease infinite;
 }
-.photo-badge.top-right { top: -10px; right: -70px; }
+.photo-badge.top-right { top: 10px; right: -60px; }
 
 @keyframes pulse {
   0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.6); opacity: 0.5; }
+  50% { transform: scale(1.5); opacity: 0.6; }
 }
-
-/* Dark mode — glow violet */
-[data-theme="dark"] .hero-photo {
-  filter: drop-shadow(0 16px 36px rgba(124, 106, 247, 0.4));
-}
-[data-theme="dark"] .hero-photo:hover {
-  filter: drop-shadow(0 20px 52px rgba(124, 106, 247, 0.6)) brightness(1.06);
-}
-[data-theme="dark"] .photo-ring-deco { opacity: 0.12; }
-
-/* Light mode — glow bleu doux */
-[data-theme="light"] .hero-photo {
-  filter: drop-shadow(0 16px 36px rgba(79, 142, 247, 0.2));
-}
-[data-theme="light"] .photo-ring-deco { opacity: 0.07; }
-
 /* Right — Float cards */
 .hero-right {
   display: flex; flex-direction: column; gap: 16px;
@@ -774,4 +733,49 @@
   .skill-icon-card { min-width: 80px; max-width: 100px; padding: 14px 10px; }
   .skill-tabs { gap: 4px; }
   .skill-tab-btn { padding: 8px 12px; font-size: 0.8rem; }
+}
+
+/* ══════════════════════════════════════
+   TANA MAP
+══════════════════════════════════════ */
+.tana-map-wrap {
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 1px solid var(--card-border);
+  box-shadow: 0 4px 20px var(--accent-glow);
+  margin-top: 4px;
+  transition: box-shadow 0.3s;
+}
+.tana-map-wrap:hover {
+  box-shadow: 0 8px 32px var(--accent-glow);
+}
+.tana-map {
+  width: 100%;
+  height: 180px;
+}
+.tana-map .leaflet-popup-content-wrapper {
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+.tana-map .leaflet-popup-tip { background: var(--card); }
+
+/* ── Mobile photo centered ── */
+@media (max-width: 900px) {
+  .hero-photo-col {
+    margin-left: 0 !important;
+    justify-content: center;
+  }
+  .hero-photo-frame {
+    width: 240px !important;
+    height: 240px !important;
+  }
+  .photo-badge.top-right {
+    right: -50px;
+    top: 5px;
+  }
 }

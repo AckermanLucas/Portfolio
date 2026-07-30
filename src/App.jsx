@@ -271,6 +271,76 @@ function SkillsSection() {
   );
 }
 
+
+/* ─── TANA MAP ──────────────────────────────── */
+function TanaMap() {
+  const mapRef = useRef(null);
+  const mapInstance = useRef(null);
+
+  useEffect(() => {
+    if (mapInstance.current) return;
+
+    // Load Leaflet dynamically
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+    document.head.appendChild(link);
+
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+    script.onload = () => {
+      const L = window.L;
+      if (!mapRef.current || mapInstance.current) return;
+
+      const map = L.map(mapRef.current, {
+        center: [-18.9101, 47.5362],
+        zoom: 13,
+        zoomControl: true,
+        scrollWheelZoom: false,
+        attributionControl: false,
+      });
+
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+        maxZoom: 18,
+      }).addTo(map);
+
+      const icon = L.divIcon({
+        className: '',
+        html: `<div style="
+          width:14px;height:14px;
+          background:var(--accent, #7c6af7);
+          border:3px solid white;
+          border-radius:50%;
+          box-shadow:0 0 12px rgba(124,106,247,0.8);
+        "></div>`,
+        iconSize: [14, 14],
+        iconAnchor: [7, 7],
+      });
+
+      L.marker([-18.9101, 47.5362], { icon })
+        .addTo(map)
+        .bindPopup('<b>Antananarivo</b><br>Madagascar')
+        .openPopup();
+
+      mapInstance.current = map;
+    };
+    document.head.appendChild(script);
+
+    return () => {
+      if (mapInstance.current) {
+        mapInstance.current.remove();
+        mapInstance.current = null;
+      }
+    };
+  }, []);
+
+  return (
+    <div className="tana-map-wrap">
+      <div ref={mapRef} className="tana-map" />
+    </div>
+  );
+}
+
 /* ─── SECTION TITLE ─────────────────────────── */
 function SectionTitle({ num, title }) {
   return (
@@ -374,6 +444,7 @@ export default function App() {
               <div className="info-item"><span className="info-icon"><Icon name="mail" size={16}/></span><div><span className="info-label">Email</span><span className="info-value">{data.contact.email}</span></div></div>
               <div className="info-item"><span className="info-icon"><Icon name="phone" size={16}/></span><div><span className="info-label">Téléphone</span><span className="info-value">{data.contact.phone}</span></div></div>
               <div className="info-item"><span className="info-icon"><Icon name="mappin" size={16}/></span><div><span className="info-label">Localisation</span><span className="info-value">{data.contact.address}</span></div></div>
+              <TanaMap />
               {data.languages.map((l) => <div key={l.lang} className="info-item"><span className="info-icon"><Icon name="globe" size={16}/></span><div><span className="info-label">{l.lang}</span><span className="info-value">{l.level}</span></div></div>)}
             </div>
           </div>
